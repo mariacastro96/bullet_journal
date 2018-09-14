@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_214430) do
+ActiveRecord::Schema.define(version: 2018_09_14_221748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,14 @@ ActiveRecord::Schema.define(version: 2018_09_11_214430) do
     t.index ["monthly_log_id"], name: "index_monthly_types_on_monthly_log_id"
   end
 
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_restaurants_on_user_id"
+  end
+
   create_table "states", force: :cascade do |t|
     t.string "name", default: "finished", null: false
     t.string "symbol", default: "x", null: false
@@ -117,4 +125,5 @@ ActiveRecord::Schema.define(version: 2018_09_11_214430) do
   add_foreign_key "journals", "users"
   add_foreign_key "monthly_logs", "journals"
   add_foreign_key "monthly_types", "monthly_logs"
+  add_foreign_key "restaurants", "users"
 end
