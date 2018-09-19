@@ -6,7 +6,7 @@ class JournalPolicy < ApplicationPolicy
   end
 
   def index?
-    user.admin?
+    true
   end
 
   def show?
@@ -16,16 +16,16 @@ class JournalPolicy < ApplicationPolicy
 
   def create?
     #record.user = the user that belongs to the record
-    user.admin?
+    record.user == user || user.admin?
   end
 
   def update?
     #record.user = the user that belongs to the record
-    user.admin?
+    record.user == user || user.admin?
   end
 
   def destroy?
     #record.user = the user that belongs to the record
-    user.admin?
+    record.user == user || user.admin?
   end
 end

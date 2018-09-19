@@ -3,7 +3,7 @@ class JournalsController < ApplicationController
   before_action :set_journal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @journals = Journal.all
+    @journals = Journal.all.current_user_journals(current_user).order(updated_at: :desc)
     authorize @journals
   end
 
