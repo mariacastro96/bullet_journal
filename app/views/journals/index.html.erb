@@ -1,2 +1,13 @@
-<h1>Journals#index</h1>
-<p>Find me in app/views/journals/index.html.erb</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">description</th>
+      <th scope="col">user</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @journals %>
+  </tbody>
+</table>
